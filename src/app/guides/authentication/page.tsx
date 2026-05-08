@@ -1,8 +1,10 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ShieldCheck, Search, ZoomIn, Fingerprint, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const AuthenticationGuidePage = () => {

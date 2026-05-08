@@ -3,6 +3,7 @@
 import React from 'react';
 import { Sparkles, Droplets, Shield, Info, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const SneakerCarePage = () => {

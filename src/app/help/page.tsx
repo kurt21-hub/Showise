@@ -1,10 +1,11 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { Search, Book, Shield, Truck, RefreshCw, MessageCircle, ArrowRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 const HelpCenterPage = () => {
   const categories = [
