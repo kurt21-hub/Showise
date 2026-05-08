@@ -368,18 +368,37 @@ const Home = () => {
                         <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">{shoe.name}</h3>
                         <p className="text-2xl font-extrabold text-orange-600 mb-5">{formatPeso(shoe.price)}</p>
 
-                        <div className="grid grid-cols-2 gap-3">
-                          <Link href={`/products/${shoe.id}`}>
-                            <Button variant="outline" className="w-full rounded-full h-12 border-2 border-gray-200 font-bold text-gray-900 hover:bg-gray-50">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button className="w-full rounded-full h-12 bg-gray-900 text-white font-bold hover:bg-gray-800">
                               View in App
                             </Button>
-                          </Link>
-                          <Link href={`/marketplace/${shoe.id}`}>
-                            <Button className="w-full rounded-full h-12 bg-gray-900 text-white font-bold hover:bg-gray-800">
-                              Buy in App
-                            </Button>
-                          </Link>
-                        </div>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-md p-8 rounded-3xl">
+                            <DialogHeader>
+                              <div className="mx-auto mb-4 h-20 w-20 rounded-full bg-orange-50 flex items-center justify-center">
+                                <Smartphone className="w-8 h-8 text-orange-600" />
+                              </div>
+                              <DialogTitle className="text-4xl font-bold text-center">Download the App</DialogTitle>
+                              <DialogDescription className="text-center text-lg text-gray-500 mt-2 leading-relaxed">
+                                To continue shopping and receive personalized AI recommendations, download the ShoeWise app on your phone.
+                              </DialogDescription>
+                            </DialogHeader>
+
+                            <div className="mt-4 space-y-3">
+                              <Button asChild className="w-full h-14 rounded-2xl text-xl font-bold bg-black hover:bg-gray-900 text-white">
+                                <a href="https://apps.apple.com" target="_blank" rel="noreferrer">
+                                  Download for iOS
+                                </a>
+                              </Button>
+                              <Button asChild variant="outline" className="w-full h-14 rounded-2xl text-xl font-bold border-gray-300 bg-gray-50 hover:bg-gray-100 text-gray-900">
+                                <a href="https://play.google.com/store" target="_blank" rel="noreferrer">
+                                  Download for Android
+                                </a>
+                              </Button>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
                     </CardContent>
                   </Card>
