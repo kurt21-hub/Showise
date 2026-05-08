@@ -3,6 +3,7 @@
 import React from 'react';
 import { Trophy, Star, Zap, Gift, ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -32,7 +33,7 @@ const RewardsPage = () => {
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Level up your sneaker game.</h1>
           <p className="text-xl text-gray-400 mb-10">Earn points for every scan, purchase, and trade. Unlock exclusive perks and early access to drops.</p>
-          
+
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
             <div className="flex justify-between items-end mb-4">
               <div>
@@ -47,7 +48,7 @@ const RewardsPage = () => {
             <Progress value={70} className="h-3 bg-white/10" />
           </div>
         </div>
-        
+
         <Trophy className="absolute -bottom-20 -right-20 w-96 h-96 text-white/5 rotate-12" />
       </div>
 
@@ -85,7 +86,7 @@ const RewardsPage = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="bg-orange-600 rounded-[2.5rem] p-10 text-white">
           <h3 className="text-2xl font-bold mb-6">How to earn points</h3>
           <div className="space-y-6">

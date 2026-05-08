@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useShoeWise } from '@/context/ShoeWiseContext';
+import { cn } from '@/lib/utils';
 import { Product } from '@/types';
 import { toast } from 'sonner';
 
@@ -42,18 +43,18 @@ const ProductsPage = () => {
         <div>
           <h1 className="text-3xl font-bold mb-2">Browse Shoes</h1>
           <p className="text-gray-600">
-            {scanResult 
-              ? `Showing recommendations for your size ${scanResult.recommendedSize}` 
+            {scanResult
+              ? `Showing recommendations for your size ${scanResult.recommendedSize}`
               : "Find your next favorite pair."}
           </p>
         </div>
-        
+
         <div className="flex items-center space-x-2">
           <div className="relative flex-1 md:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search brands, models..." 
+            <input
+              type="text"
+              placeholder="Search brands, models..."
               className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -87,9 +88,9 @@ const ProductsPage = () => {
           <Card key={product.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all rounded-3xl group">
             <CardContent className="p-0">
               <div className="relative aspect-square bg-gray-100 overflow-hidden">
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
+                <img
+                  src={product.image}
+                  alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {scanResult && product.fitScore && (
@@ -115,8 +116,8 @@ const ProductsPage = () => {
                 <h3 className="font-bold text-lg mb-2 line-clamp-1">{product.name}</h3>
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold text-gray-900">${product.price}</span>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="rounded-full bg-gray-900 hover:bg-gray-800 text-white"
                     onClick={() => handleAddToCart(product)}
                   >

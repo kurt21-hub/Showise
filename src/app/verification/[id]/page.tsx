@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useParams } from 'next/navigation';
-import { ShieldCheck, Search, Ruler, Camera, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Search, Ruler, Camera, CheckCircle2, Clock, AlertCircle, Info } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -49,8 +49,8 @@ const VerificationTrackingPage = () => {
                   )}
                   <div className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center shrink-0 z-10",
-                    step.status === 'completed' ? "bg-green-500 text-white" : 
-                    step.status === 'current' ? "bg-orange-100 text-orange-600 border-2 border-orange-600" : "bg-gray-100 text-gray-400"
+                    step.status === 'completed' ? "bg-green-500 text-white" :
+                      step.status === 'current' ? "bg-orange-100 text-orange-600 border-2 border-orange-600" : "bg-gray-100 text-gray-400"
                   )}>
                     {step.icon}
                   </div>

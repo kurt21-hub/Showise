@@ -3,8 +3,9 @@
 import Link from "next/link";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scan, Send } from 'lucide-react';
+import { Scan, Send, ShieldCheck, Zap, Users, TrendingUp, Gift, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -110,25 +111,167 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20">
+      {/* Features Section - Core Services */}
+      <section id="features" className="py-20 bg-gray-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold mb-4">Features</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">The Complete Sneaker Ecosystem</h2>
+            <p className="text-xl text-gray-300">Everything you need to collect, verify, and trade authenticated sneakers.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-3">AI Recommendations</h3>
-              <p className="text-gray-600">Get personalized sneaker recommendations based on your style and preferences.</p>
+
+          {/* Main Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: '🛍️',
+                title: 'Buy',
+                desc: 'Discover authenticated shoes with AI fit matching before you purchase.',
+                link: '/products',
+              },
+              {
+                icon: '💼',
+                title: 'Sell',
+                desc: 'List your gently worn shoes and reach thousands of active buyers instantly.',
+                link: '/sell',
+              },
+              {
+                icon: '🔄',
+                title: 'Trade-In',
+                desc: 'Swap your old pairs for credit toward new AI-recommended footwear.',
+                link: '/marketplace/trade',
+              },
+              {
+                icon: '🛡️',
+                title: 'Verify',
+                desc: 'Get AI-powered authentication reports for complete peace of mind.',
+                link: '/verification',
+              },
+              {
+                icon: '👟',
+                title: 'Fit Matching',
+                desc: 'Our AI scans your feet to find the perfect size and model for you.',
+                link: '/tools/size-comparison',
+              },
+              {
+                icon: '💬',
+                title: 'Community',
+                desc: 'Connect with sneaker enthusiasts, share your collection, and trade tips.',
+                link: '/community',
+              },
+            ].map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="group"
+              >
+                <Link href={feature.link}>
+                  <Card className="h-full bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 hover:border-orange-500 transition-all cursor-pointer hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-2">
+                    <CardContent className="p-8 flex flex-col h-full">
+                      <div className="text-5xl mb-4">{feature.icon}</div>
+                      <h3 className="text-2xl font-bold mb-3 text-white">{feature.title}</h3>
+                      <p className="text-gray-400 flex-grow">{feature.desc}</p>
+                      <div className="mt-4 text-orange-500 font-semibold flex items-center">
+                        Learn more →
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Stats Section */}
+          <div className="bg-gradient-to-r from-orange-600 to-orange-500 rounded-3xl p-12 text-white">
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              {[
+                { stat: '2.4M+', label: 'Shoes Matched' },
+                { stat: '180K+', label: 'Pairs Resold' },
+                { stat: '45K+', label: 'Trade-Ins Completed' },
+                { stat: '340T', label: 'CO₂ Saved (kg)' },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <div className="text-3xl md:text-4xl font-bold mb-2">{item.stat}</div>
+                  <div className="text-orange-100 font-medium">{item.label}</div>
+                </motion.div>
+              ))}
             </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-3">Marketplace</h3>
-              <p className="text-gray-600">Buy, sell, and trade sneakers with other enthusiasts in our secure marketplace.</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-3">Community</h3>
-              <p className="text-gray-600">Join our community to discuss the latest releases, share your collection, and connect with others.</p>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced Features Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-4xl font-bold mb-4">Powered by Advanced AI</h2>
+            <p className="text-gray-600 text-lg">Cutting-edge technology for a smarter sneaker experience.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                icon: <Smartphone className="w-8 h-8" />,
+                title: 'AI Foot Scanning',
+                desc: 'Get precise foot measurements using your smartphone camera for perfect fits.',
+                color: 'bg-blue-100 text-blue-600',
+              },
+              {
+                icon: <ShieldCheck className="w-8 h-8" />,
+                title: 'Advanced Authentication',
+                desc: '3D volumetric analysis and spectral material detection for 100% authenticity.',
+                color: 'bg-green-100 text-green-600',
+              },
+              {
+                icon: <TrendingUp className="w-8 h-8" />,
+                title: 'Price Intelligence',
+                desc: 'AI-powered pricing recommendations based on real-time market data.',
+                color: 'bg-purple-100 text-purple-600',
+              },
+              {
+                icon: <Users className="w-8 h-8" />,
+                title: 'Smart Matching',
+                desc: 'Connect buyers and sellers with precision matching algorithms.',
+                color: 'bg-pink-100 text-pink-600',
+              },
+              {
+                icon: <Gift className="w-8 h-8" />,
+                title: 'Rewards & Loyalty',
+                desc: 'Earn points on every transaction and unlock exclusive tier benefits.',
+                color: 'bg-yellow-100 text-yellow-600',
+              },
+              {
+                icon: <Zap className="w-8 h-8" />,
+                title: 'Market Insights',
+                desc: 'Real-time analytics on trends, demand, and price movements.',
+                color: 'bg-orange-100 text-orange-600',
+              },
+            ].map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8 flex items-start gap-6">
+                    <div className={`p-4 rounded-xl shrink-0 ${feature.color}`}>
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                      <p className="text-gray-600">{feature.desc}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Ruler, Info, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';

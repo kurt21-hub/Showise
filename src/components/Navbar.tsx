@@ -16,10 +16,10 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Features', href: '#features' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Features', href: '/features' },
+    { name: 'Marketplace', href: '/products' },
+    { name: 'Community', href: '/community' },
   ];
 
   const handleSearch = (e: React.FormEvent) => {

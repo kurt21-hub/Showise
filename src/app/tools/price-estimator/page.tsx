@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Calculator, TrendingUp, Info, ArrowRight, Search, Tag } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -87,7 +88,7 @@ const PriceEstimatorPage = () => {
                     </p>
                   </div>
 
-                  <Button 
+                  <Button
                     onClick={handleEstimate}
                     disabled={isCalculating}
                     className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-full h-16 text-xl font-bold shadow-lg shadow-orange-200"
@@ -110,7 +111,7 @@ const PriceEstimatorPage = () => {
                 <p className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-4">Estimated Value</p>
                 <h2 className="text-6xl font-black mb-2">${result.average}</h2>
                 <p className="text-gray-400 mb-8">Suggested Listing Range: ${result.low} - ${result.high}</p>
-                
+
                 <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
                   <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
                     <p className="text-[10px] text-gray-400 uppercase font-bold mb-1">Demand</p>
