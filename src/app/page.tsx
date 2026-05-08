@@ -19,6 +19,52 @@ const Home = () => {
     { name: 'ASICS', slug: 'asics', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg' },
   ];
 
+  const topMatches = [
+    {
+      id: '1',
+      name: 'Nike Air Max Pulse',
+      brand: 'Nike',
+      price: 8995,
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+      match: 98,
+      category: 'Running',
+    },
+    {
+      id: '2',
+      name: 'Adidas Ultraboost 24',
+      brand: 'Adidas',
+      price: 10995,
+      image: 'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?q=80&w=800&auto=format&fit=crop',
+      match: 94,
+      category: 'Running',
+    },
+    {
+      id: '3',
+      name: 'New Balance 1080v13',
+      brand: 'New Balance',
+      price: 9995,
+      image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=800&auto=format&fit=crop',
+      match: 96,
+      category: 'Running',
+    },
+    {
+      id: '4',
+      name: 'ASICS Gel-Kayano 30',
+      brand: 'ASICS',
+      price: 9495,
+      image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop',
+      match: 92,
+      category: 'Stability',
+    },
+  ];
+
+  const formatPeso = (amount: number) =>
+    new Intl.NumberFormat('en-PH', {
+      style: 'currency',
+      currency: 'PHP',
+      maximumFractionDigits: 0,
+    }).format(amount);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent! We'll get back to you soon.");
@@ -272,6 +318,74 @@ const Home = () => {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Top Matches Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold tracking-wide text-orange-600 uppercase bg-orange-100 rounded-full">
+              AI-Curated Picks
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Top Matches for You</h2>
+            <p className="text-gray-600 text-lg">AI-curated selections with personalized fit accuracy scores.</p>
+          </div>
+
+          <div className="overflow-x-auto pb-4 -mx-4 px-4">
+            <div className="flex gap-6 min-w-max snap-x snap-mandatory">
+              {topMatches.map((shoe) => (
+                <motion.div
+                  key={shoe.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="snap-start"
+                >
+                  <Card className="w-[320px] sm:w-[360px] overflow-hidden rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-lg transition-all group">
+                    <CardContent className="p-0">
+                      <div className="relative aspect-square bg-gray-100 overflow-hidden">
+                        <img
+                          src={shoe.image}
+                          alt={shoe.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="inline-flex items-center rounded-full bg-orange-600 px-3 py-1 text-sm font-bold text-white shadow-md">
+                            {shoe.match}% Match
+                          </span>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-900 backdrop-blur-sm">
+                            {shoe.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-6 bg-white">
+                        <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">{shoe.brand}</p>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-1">{shoe.name}</h3>
+                        <p className="text-2xl font-extrabold text-orange-600 mb-5">{formatPeso(shoe.price)}</p>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <Link href={`/products/${shoe.id}`}>
+                            <Button variant="outline" className="w-full rounded-full h-12 border-2 border-gray-200 font-bold text-gray-900 hover:bg-gray-50">
+                              View in App
+                            </Button>
+                          </Link>
+                          <Link href={`/marketplace/${shoe.id}`}>
+                            <Button className="w-full rounded-full h-12 bg-gray-900 text-white font-bold hover:bg-gray-800">
+                              Buy in App
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
