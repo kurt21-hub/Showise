@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scan, Send, ShieldCheck, Zap, Users, TrendingUp, Gift, Smartphone } from 'lucide-react';
+import { Scan, Send, ShieldCheck, Zap, Users, TrendingUp, Gift, Smartphone, Footprints } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -55,6 +55,29 @@ const Home = () => {
       image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop',
       match: 92,
       category: 'Stability',
+    },
+  ];
+
+  const problemHighlights = [
+    {
+      stat: '30-40%',
+      title: 'Online Shoe Returns',
+      desc: 'Due to sizing issues and poor fit predictions.',
+    },
+    {
+      stat: '60%',
+      title: 'Wrong Shoe Sizes',
+      desc: 'People unknowingly wear the wrong shoe size daily.',
+    },
+    {
+      stat: '0',
+      title: 'Standardized Fit System',
+      desc: 'No universal sizing standard across brands.',
+    },
+    {
+      stat: 'M+',
+      title: 'PWD Users Struggling',
+      desc: 'Millions of people with disabilities lack proper footwear options.',
     },
   ];
 
@@ -154,6 +177,42 @@ const Home = () => {
           <p className="text-lg text-gray-600 leading-relaxed">
             ShoeWise is a revolutionary platform for sneaker enthusiasts. We provide AI-powered recommendations, a vibrant marketplace, and a community for everything sneakers. Our mission is to make the world of sneakers more accessible and enjoyable for everyone.
           </p>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <p className="text-orange-600 uppercase tracking-[0.2em] font-bold mb-4">The Problem</p>
+            <h2 className="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900">
+              Buying Shoes Online
+              <br />
+              Shouldn&apos;t Be <span className="text-orange-600">Guesswork.</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {problemHighlights.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+              >
+                <Card className="h-full rounded-3xl border-none bg-gray-200/80">
+                  <CardContent className="p-8">
+                    <div className="flex items-start justify-between mb-4">
+                      <p className="text-6xl font-extrabold text-orange-600 leading-none">{item.stat}</p>
+                      <Footprints className="w-7 h-7 text-gray-300" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-600 text-lg leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
