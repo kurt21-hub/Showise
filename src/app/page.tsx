@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Scan, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
